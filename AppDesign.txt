@@ -1,0 +1,51 @@
+Data Model:
+----------
+----------
+
+>>>  General data model for a grocery item
+
+>>> Specific Models
+
+
+
+
+
+
+
+BUSINESS LOGIC
+---------------
+---------------
+
+
+
+
+
+NEXT STEPS
+-----------
+-----------
+
+
+
+*************************************************************** 
+*********************    Reference     ***********************
+***************************************************************
+
+
+
+var taskSchema = new schema({
+  name: {
+    type: String,
+    required: 'Kindly enter the name of your taks'
+  },
+  Created_date: {
+    type: String,
+    default: "0"
+  },
+  status: {
+    type: [{
+      type: String,
+      enum: ['pending', 'ongoing', 'completed']
+    }],
+    default: ['pending']
+  }
+}, { collection: 'Tododb' });
