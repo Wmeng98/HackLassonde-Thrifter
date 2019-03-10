@@ -1,11 +1,13 @@
 var express = require('express'); // import express module
 var app = express(); // create express app
+
 var port = 3000;
 
 // task = require('./api/models/todoModel'),
 var mongoose = require('mongoose')
 
 var bodyParser = require('body-parser'); // Parse incoming request bodies in a 
+var multer  = require('multer');
 // middleware before your handlers, available under the req.body property.
 
 // LOAD the created model - task 
@@ -23,14 +25,39 @@ mongoose.connection.on("open", function(){
 });
 
 // Middleware
+// app.use(require('body-parser').urlencoded());
+// app.use(bodyParser.json()); // for parsing application/json
 
-app.use(bodyParser.json()); // for parsing application/json
+// app.use(express.urlencoded());
 
 app.use(bodyParser.urlencoded({
   parameterLimit: 100000,
   limit: '150mb',
   extended: true
 }));
+
+
+// SET STORAGE
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'uploads')
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + '-' + Date.now() +'.png')
+  }
+});
+ 
+var upload = multer({ storage: storage });
+
+app.post('/api/thrifter/uploadfile', upload.single('files'), (req, res, next) => {
+  const file = req.file
+  if (!file) {
+    const error = new Error('Please upload a file')
+    error.httpStatusCode = 400
+    return next(error)
+  }
+    res.send(file)
+});
 
 // CORS on ExpressJS
 // app.use(function(req, res, next) {
