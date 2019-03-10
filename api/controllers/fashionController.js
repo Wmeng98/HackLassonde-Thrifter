@@ -11,6 +11,7 @@ var mongoose = require('mongoose');
 
 
 var fashionModel = mongoose.model('fashionDB');
+var topModel = mongoose.model('topDB');
 
 
 exports.getBase = function(req, res) {
@@ -18,14 +19,14 @@ exports.getBase = function(req, res) {
   res.send(JSON.stringify({ Fashion: "Fashion Express Server"}));
 };
 
-exports.getMatching = function(req, res) {
- // new formidable.IncomingForm(); // instantiate formidable object
-  console.log("********************");
-  console.log(req.body.files[0]);
-  console.log(req.files);
+// exports.getMatching = function(req, res) {
+//  // new formidable.IncomingForm(); // instantiate formidable object
+//   console.log("********************");
+//   console.log(req.body.files[0]);
+//   console.log(req.files);
 
-  res.send(JSON.stringify({ Fashion: "Fashion Express Server"})); 
-}
+//   res.send(JSON.stringify({ Fashion: "Fashion Express Server"})); 
+// }
 
 exports.postItem = function(req, res) {
   var clothingItem = new fashionModel({
@@ -43,6 +44,14 @@ exports.getAll = function(req, res) {
     res.json(docs);
   });
 };
+
+exports.getTopAll = function(req, res) {
+  topModel.find({}, function(err, items) {
+    if (err) res.send(err);
+    res.json(items);
+  });
+};
+
 
 
 
