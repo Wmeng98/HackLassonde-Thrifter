@@ -308,36 +308,36 @@ module.exports = function(app) {
             // Description: dict["Description"],
             // Store: dict["Store"],
             // imgFileName: dict["imgFileName"],
-            Trouser: dict ['Trouser'],
-            Jeans: dict ['Jeans'],
-            Denim: dict ['Denim'],
-            Trousers: dict ['Trousers'],
-            Pocket: dict ['Pocket'],
-            Textile:dict ['Textile'],
-            Sportswear: dict ['Sportswear'],
-            Active_Pants:dict ['Active_Pants'],
-            Sweatpant: dict ['Sweatpant'],
-            Camouflage: dict ['Camouflage'],
-            Pattern: dict ['Pattern'],
-            Design:dict ['Design'],
-            Military: dict ['Military'],
-            Tights:dict ['Tights'],
-            Leggings:dict ['Leggings'],
-            Yoga_Pant:dict ['Yoga_Pant'],
-            Yellow: dict ['Yellow'],
-            Black:dict ['Black'],
-            White:dict ['White'],
-            Purple: dict ['Purple'],
+            Trouser: (dict['Trouser'] == null ? 0 : dict['Trouser']),
+            Jeans: (dict['Jeans'] == null ? 0 : dict['Jeans']),
+            Denim: (dict['Denim'] == null ? 0 : dict['Denim']),
+            Trousers: (dict['Trousers'] == null ? 0 : dict['Trousers']),
+            Pocket: (dict['Pocket'] == null ? 0 : dict['Pocket']),
+            Textile:(dict['Textile'] == null ? 0 : dict['Textile']),
+            Sportswear: (dict['Sportswear'] == null ? 0 : dict['Sportswear']),
+            Active_Pants:(dict['Active_Pants'] == null ? 0 : dict['Active_Pants']),
+            Sweatpant: (dict['Sweatpant'] == null ? 0 : dict['Sweatpant']),
+            Camouflage: (dict['Camouflage'] == null ? 0 : dict['Camouflage']),
+            Pattern: (dict['Pattern'] == null ? 0 : dict['Pattern']),
+            Design:(dict['Design'] == null ? 0 : dict['Design']),
+            Military: (dict['Military'] == null ? 0 : dict['Military']),
+            Tights:(dict['Tights'] == null ? 0 : dict['Tights']),
+            Leggings:(dict['Leggings'] == null ? 0 : dict['Leggings']),
+            Yoga_Pant:(dict['Yoga_Pant'] == null ? 0 : dict['Yoga_Pant']),
+            Yellow: (dict['Yellow'] == null ? 0 : dict['Yellow']),
+            Black:(dict['Black'] == null ? 0 : dict['Black']),
+            White:(dict['White'] == null ? 0 : dict['White']),
+            Purple: (dict['Purple'] == null ? 0 : dict['Purple']),
             Orange:dict['Orange'],
-            Light_Blue:dict ['Light_Blue'],
-            Red: dict ['Red'],
-            Grey: dict ['Grey'],
-            Green: dict ['Green'],
-            Pink: dict ['Pink'],
-            Blue:dict ['Blue'],
-            Violet: dict ['Violet'],
-            Brown: dict ['Brown'],
-            Beige:dict ['Beige']
+            Light_Blue:(dict['Light_Blue'] == null ? 0 : dict['Light_Blue']),
+            Red: (dict['Red'] == null ? 0 : dict['Red']),
+            Grey: (dict['Grey'] == null ? 0 : dict['Grey']),
+            Green: (dict['Green'] == null ? 0 : dict['Green']),
+            Pink: (dict['Pink'] == null ? 0 : dict['Pink']),
+            Blue:(dict['Blue'] == null ? 0 : dict['Blue']),
+            Violet: (dict['Violet'] == null ? 0 : dict['Violet']),
+            Brown: (dict['Brown'] == null ? 0 : dict['Brown']),
+            Beige:(dict['Beige'] == null ? 0 : dict['Beige'])
           }
         
           bottomModel.find({}, function(err, items) {
@@ -348,6 +348,10 @@ module.exports = function(app) {
   
             matchResults = knn(queryImg, objArr, options);
             
+            for (var i in matchResults) {
+              matchResults[i].percentFloorMatch=calcMatch.calculatePercentageMatch(queryImg, matchResults[i]);
+            }
+
             base64.convertToBase64(matchResults, res);
             console.log(matchResults);
             // console.log(objArr);  
@@ -357,42 +361,42 @@ module.exports = function(app) {
             // Description: dict["Description"],
             // Store: dict["Store"],
             // imgFileName: dict["imgFileName"],
-            Dress: dict ['Dress'],
-            Skirt:dict ['Skirt'],
-            Cocktail_Dress: dict ['Cocktail_Dress'],
-            Sleeve: dict['Sleeve'],
-            Day_Dress: dict ['Day_Dress'],
-            Textile: dict['Textile'],
-            Aline: dict ['Aline'],
-            Costume: dict ['Costume'],
-            Gown: dict['Gown'],
-            Formal_Wear: dict ['Formal_Wear'],
-            Bridal_Party_Dress: dict ['Bridal_Party_Dress'],
-            Strapless_Dress: dict['Strapless_Dress'],
-            Wedding_Dress: dict ['Wedding_Dress'], 
-            Hoopskirt: dict ['Hoopskirt'],
-            Haute_Couture: dict ['Haute_Couture'],
-            Embroidery: dict ['Embroidery'],
-            Shorts:dict ['Shorts'],
-            Pocket: dict ['Pocket'],
-            Active_Shorts: dict ['Active_Shorts'],
-            Pencil_Skirt:dict['Pencil_Skirt'],
-            Cobalt_Blue: dict['Cobalt_Blue'],
-            Skort:dict['Skort'],
-            Yellow: dict['Yellow'],
-            Black: dict['Black'],
-            White:dict['White'],
-            Purple:dict ['Purple'],
-            Orange: dict ['Orange'],
-            Light_Blue: dict ['Light_Blue'],
-            Red:dict ['Red'],
-            Grey: dict ['Grey'],
-            Green: dict ['Green'],
-            Pink: dict ['Pink'],
-            Blue: dict ['Blue'],
-            Violet: dict ['Violet'],
-            Brown: dict ['Brown'],
-            Beige: dict ['Beige']
+            Dress: (dict ['Dress'] == null ? 0 : dict ['Dress']),
+            Skirt:(dict ['Skirt'] == null ? 0 : dict ['Skirt']),
+            Cocktail_Dress: (dict ['Cocktail_Dress'] == null ? 0 : dict ['Cocktail_Dress']),
+            Sleeve: (dict['Sleeve'] == null ? 0 : dict['Sleeve']),
+            Day_Dress: (dict ['Day_Dress'] == null ? 0 : dict ['Day_Dress']),
+            Textile: (dict['Textile'] == null ? 0 : dict['Textile']),
+            Aline: (dict ['Aline'] == null ? 0 : dict ['Aline']),
+            Costume: (dict ['Costume'] == null ? 0 : dict ['Costume']),
+            Gown: (dict['Gown'] == null ? 0 : dict['Gown']),
+            Formal_Wear: (dict ['Formal_Wear'] == null ? 0 : dict ['Formal_Wear']),
+            Bridal_Party_Dress: (dict ['Bridal_Party_Dress'] == null ? 0 : dict ['Bridal_Party_Dress']),
+            Strapless_Dress: (dict['Strapless_Dress'] == null ? 0 : dict['Strapless_Dress']),
+            Wedding_Dress: (dict ['Wedding_Dress'] == null ? 0 : dict ['Wedding_Dress']), 
+            Hoopskirt: (dict ['Hoopskirt'] == null ? 0 : dict ['Hoopskirt']),
+            Haute_Couture: (dict ['Haute_Couture'] == null ? 0 : dict ['Haute_Couture']),
+            Embroidery: (dict ['Embroidery'] == null ? 0 : dict ['Embroidery']),
+            Shorts:(dict ['Shorts'] == null ? 0 : dict ['Shorts']),
+            Pocket: (dict ['Pocket'] == null ? 0 : dict ['Pocket']),
+            Active_Shorts: (dict ['Active_Shorts'] == null ? 0 : dict ['Active_Shorts']),
+            Pencil_Skirt:(dict['Pencil_Skirt'] == null ? 0 : dict['Pencil_Skirt']),
+            Cobalt_Blue: (dict['Cobalt_Blue'] == null ? 0 : dict['Cobalt_Blue']),
+            Skort:(dict['Skort'] == null ? 0 : dict['Skort']),
+            Yellow: (dict['Yellow'] == null ? 0 : dict['Yellow']),
+            Black: (dict['Black'] == null ? 0 : dict['Black']),
+            White:(dict['White'] == null ? 0 : dict['White']),
+            Purple:(dict ['Purple'] == null ? 0 : dict ['Purple']),
+            Orange: (dict ['Orange'] == null ? 0 : dict ['Orange']),
+            Light_Blue: (dict ['Light_Blue'] == null ? 0 : dict ['Light_Blue']),
+            Red:(dict ['Red'] == null ? 0 : dict ['Red']),
+            Grey: (dict ['Grey'] == null ? 0 : dict ['Grey']),
+            Green: (dict ['Green'] == null ? 0 : dict ['Green']),
+            Pink: (dict ['Pink'] == null ? 0 : dict ['Pink']),
+            Blue: (dict ['Blue'] == null ? 0 : dict ['Blue']),
+            Violet: (dict ['Violet'] == null ? 0 : dict ['Violet']),
+            Brown: (dict ['Brown'] == null ? 0 : dict ['Brown']),
+            Beige: (dict ['Beige'] == null ? 0 : dict ['Beige'])
           }
         
           dressModel.find({}, function(err, items) {
@@ -403,6 +407,10 @@ module.exports = function(app) {
   
             matchResults = knn(queryImg, objArr, options);
             
+            for (var i in matchResults) {
+              matchResults[i].percentFloorMatch=calcMatch.calculatePercentageMatch(queryImg, matchResults[i]);
+            }
+
             base64.convertToBase64(matchResults, res);
             console.log(matchResults);
             // console.log(objArr); 
@@ -412,35 +420,35 @@ module.exports = function(app) {
             // Description: dict["Description"],
             // Store: dict["Store"],
             // imgFileName: dict["imgFileName"],
-            Fashion_accessory: dict ['Fashion_Accessory'],
-            Bow_Tie: dict ['Bow_Tie'],
-            Black: dict ['Black'],
-            Tie: dict ['Tie'],
-            Formal_Wear: dict ['Formal_Wear'], 
-            Footwear:dict ['Footwear'],
-            Sock: dict ['Sock'],
-            Boot: dict ['Boot'],
-            Shoe: dict ['Shoe'],
-            Beanie: dict ['Beanie'],
-            Cap: dict ['Cap'],
-            Knit_Cap: dict ['Knit_Cap'],
-            Headgear: dict ['Headgear'],
-            Hat: dict ['Hat'],
-            Bonnet: dict ['Bonnet'],
-            Yellow: dict ['Yellow'],
-            Black: dict ['Black'],
-            White: dict['White'],
-            Purple: dict ['Purple'],
-            Orange: dict ['Orange'],
-            Light_Blue: dict ['Light_Blue'],
-            Red: dict ['Red'],
-            Grey: dict ['Grey'],
-            Green: dict ['Green'],
-            Pink: dict ['Pink'],
-            Blue: dict ['Blue'],
-            Violet: dict ['Violet'],
-            Brown:dict ['Brown'],
-            Beige: dict ['Beige']
+            Fashion_accessory: (dict ['Fashion_Accessory'] == null ? 0 : dict ['Fashion_Accessory']),
+            Bow_Tie: (dict ['Bow_Tie'] == null ? 0 : dict ['Bow_Tie']),
+            Black: (dict ['Black'] == null ? 0 : dict ['Black']),
+            Tie: (dict ['Tie'] == null ? 0 : dict ['Tie']),
+            Formal_Wear: (dict ['Formal_Wear'] == null ? 0 : dict ['Formal_Wear']), 
+            Footwear:(dict ['Footwear'] == null ? 0 : dict ['Footwear']),
+            Sock: (dict ['Sock'] == null ? 0 : dict ['Sock']),
+            Boot: (dict ['Boot'] == null ? 0 : dict ['Boot']),
+            Shoe: (dict ['Shoe'] == null ? 0 : dict ['Shoe']),
+            Beanie: (dict ['Beanie'] == null ? 0 : dict ['Beanie']),
+            Cap: (dict ['Cap'] == null ? 0 : dict ['Cap']),
+            Knit_Cap: (dict ['Knit_Cap'] == null ? 0 : dict ['Knit_Cap']),
+            Headgear: (dict ['Headgear'] == null ? 0 : dict ['Headgear']),
+            Hat: (dict ['Hat'] == null ? 0 : dict ['Hat']),
+            Bonnet: (dict ['Bonnet'] == null ? 0 : dict ['Bonnet']),
+            Yellow: (dict ['Yellow'] == null ? 0 : dict ['Yellow']),
+            Black: (dict ['Black'] == null ? 0 : dict ['Black']),
+            White: (dict['White'] == null ? 0 : dict['White']),
+            Purple: (dict ['Purple'] == null ? 0 : dict ['Purple']),
+            Orange: (dict ['Orange'] == null ? 0 : dict ['Orange']),
+            Light_Blue: (dict ['Light_Blue'] == null ? 0 : dict ['Light_Blue']),
+            Red: (dict ['Red'] == null ? 0 : dict ['Red']),
+            Grey: (dict ['Grey'] == null ? 0 : dict ['Grey']),
+            Green: (dict ['Green'] == null ? 0 : dict ['Green']),
+            Pink: (dict ['Pink'] == null ? 0 : dict ['Pink']),
+            Blue: (dict ['Blue'] == null ? 0 : dict ['Blue']),
+            Violet: (dict ['Violet'] == null ? 0 : dict ['Violet']),
+            Brown:(dict ['Brown'] == null ? 0 : dict ['Brown']),
+            Beige: (dict ['Beige'] == null ? 0 : dict ['Beige'])
           }
         
           fashionAccessModel.find({}, function(err, items) {
@@ -451,6 +459,10 @@ module.exports = function(app) {
   
             matchResults = knn(queryImg, objArr, options);
             
+            for (var i in matchResults) {
+              matchResults[i].percentFloorMatch=calcMatch.calculatePercentageMatch(queryImg, matchResults[i]);
+            }
+
             base64.convertToBase64(matchResults, res);
             console.log(matchResults);
             // console.log(objArr); 
@@ -460,42 +472,42 @@ module.exports = function(app) {
             // Description: dict["Description"],
             // Store: dict["Store"],
             // imgFileName: dict["imgFileName"],
-            Shoe: dict ['Shoe'],
-            Footwear: dict ['Footwear'],
-            Work_Boots: dict ['Work_Boots'],
-            Brown: dict ['Brown'],
-            Tan: dict ['Tan'],
-            Hiking_Boot: dict ['Hiking_Boot'],
-            Steeltoe_Boot:dict ['Steeltoe_Boot'],
-            Beige: dict ['Beige'],
-            Outdoor_Shoe: dict ['Outdoor_Shoe'],
-            Durango_Boot: dict ['Durango_Boot'],
-            Snow_Boot: dict ['Snow_Boot'],
-            Motorcycle_Boot: dict ['Motorcycle_Boot'],
-            Black: dict ['Black'],
-            Sneakers: dict ['Sneakers'],
-            Walking_Shoe: dict ['Walking_Shoe'],
-            Nike_Free:dict ['Nike_Free'],
-            Plimsoll_Shoe: dict ['Plimsoll_Shoe'],
-            Boot: dict ['Boot'],
-            Athletic_Shoe: dict ['Athletic_Shoe'],
-            Skate_Shoe: dict ['Skate_Shoe'],
-            Leather: dict ['Leather'],
-            Sportswear:dict ['Sportswear'],
-            Suede: dict ['Suede'],
-            Yellow:dict ['Yellow'],
-            Black:dict ['Black'],
-            White: dict ['White'],
-            Purple:dict ['Purple'],
-            Orange: dict ['Orange'],
-            Light_Blue:dict ['Light_Blue'],
-            Red: dict ['Red'],
-            Grey: dict ['Grey'],
-            Green:dict ['Green'],
-            Pink:dict ['Pink'],
-            Blue: dict ['Blue'],
-            Violet:dict ['Violet'],
-            Brown:dict ['Brown']
+            Shoe: (dict['Shoe'] == null ? 0 : dict['Shoe']),
+            Footwear: (dict['Footwear'] == null ? 0 : dict['Footwear']),
+            Work_Boots: (dict['Work_Boots'] == null ? 0 : dict['Work_Boots']),
+            Brown: (dict['Brown'] == null ? 0 : dict['Brown']),
+            Tan: (dict['Tan'] == null ? 0 : dict['Tan']),
+            Hiking_Boot: (dict['Hiking_Boot'] == null ? 0 : dict['Hiking_Boot']),
+            Steeltoe_Boot:(dict['Steeltoe_Boot'] == null ? 0 : dict['Steeltoe_Boot']),
+            Beige: (dict['Beige'] == null ? 0 : dict['Beige']),
+            Outdoor_Shoe: (dict['Outdoor_Shoe'] == null ? 0 : dict['Outdoor_Shoe']),
+            Durango_Boot: (dict['Durango_Boot'] == null ? 0 : dict['Durango_Boot']),
+            Snow_Boot: (dict['Snow_Boot'] == null ? 0 : dict['Snow_Boot']),
+            Motorcycle_Boot: (dict['Motorcycle_Boot'] == null ? 0 : dict['Motorcycle_Boot']),
+            Black: (dict['Black'] == null ? 0 : dict['Black']),
+            Sneakers: (dict['Sneakers'] == null ? 0 : dict['Sneakers']),
+            Walking_Shoe: (dict['Walking_Shoe'] == null ? 0 : dict['Walking_Shoe']),
+            Nike_Free:(dict['Nike_Free'] == null ? 0 : dict['Nike_Free']),
+            Plimsoll_Shoe: (dict['Plimsoll_Shoe'] == null ? 0 : dict['Plimsoll_Shoe']),
+            Boot: (dict['Boot'] == null ? 0 : dict['Boot']),
+            Athletic_Shoe: (dict['Athletic_Shoe'] == null ? 0 : dict['Athletic_Shoe']),
+            Skate_Shoe: (dict['Skate_Shoe'] == null ? 0 : dict['Skate_Shoe']),
+            Leather: (dict['Leather'] == null ? 0 : dict['Leather']),
+            Sportswear:(dict['Sportswear'] == null ? 0 : dict['Sportswear']),
+            Suede: (dict['Suede'] == null ? 0 : dict['Suede']),
+            Yellow:(dict['Yellow'] == null ? 0 : dict['Yellow']),
+            Black:(dict['Black'] == null ? 0 : dict['Black']),
+            White: (dict['White'] == null ? 0 : dict['White']),
+            Purple:(dict['Purple'] == null ? 0 : dict['Purple']),
+            Orange: (dict['Orange'] == null ? 0 : dict['Orange']),
+            Light_Blue:(dict['Light_Blue'] == null ? 0 : dict['Light_Blue']),
+            Red: (dict['Red'] == null ? 0 : dict['Red']),
+            Grey: (dict['Grey'] == null ? 0 : dict['Grey']),
+            Green:(dict['Green'] == null ? 0 : dict['Green']),
+            Pink:(dict['Pink'] == null ? 0 : dict['Pink']),
+            Blue: (dict['Blue'] == null ? 0 : dict['Blue']),
+            Violet:(dict['Violet'] == null ? 0 : dict['Violet']),
+            Brown:(dict['Brown'] == null ? 0 : dict['Brown'])
           }
         
           shoeModel.find({}, function(err, items) {
@@ -506,6 +518,10 @@ module.exports = function(app) {
   
             matchResults = knn(queryImg, objArr, options);
             
+            for (var i in matchResults) {
+              matchResults[i].percentFloorMatch=calcMatch.calculatePercentageMatch(queryImg, matchResults[i]);
+            }
+
             base64.convertToBase64(matchResults, res);
             console.log(matchResults);
             // console.log(objArr); 
