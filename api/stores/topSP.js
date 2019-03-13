@@ -110,7 +110,16 @@ module.exports = {
       if (err) res.send(err);
         console.log(item);
     });
+  },
+
+  getTopItem: function(dict, objArr) {
+    topModel.find({}, function(err, items) {
+      if (err) console.log(err);
+      // console.log(items);
+      return JSON.parse(JSON.stringify(items));
+    });
   }
+
 
 }
   

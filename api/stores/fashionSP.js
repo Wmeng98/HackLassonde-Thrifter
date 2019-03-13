@@ -7,7 +7,7 @@ module.exports = {
       Description: dict["Description"],
       Store: dict["Store"],
       imgFileName: dict["imgFileName"],
-      Fashion_Accessory: dict ['Fashion_Accessory'],
+      Fashion_accessory: dict ['Fashion_Accessory'],
       Bow_Tie: dict ['Bow_Tie'],
       Black: dict ['Black'],
       Tie: dict ['Tie'],

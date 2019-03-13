@@ -3,6 +3,7 @@
 # THRIFTER Web API
 
 - The REST API for Thrifter, Hack Lassonde Application
+- Utilized Google Cloud Vision API to classify images
 
 # Steps to run
   1. Install node.js, mongodb

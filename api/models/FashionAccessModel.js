@@ -16,7 +16,7 @@ var fashionSchema = new schema({
     type: String,
     default: ""
   },
-  Fashion_Accessory: {
+  Fashion_accessory: {
     type: Number, 
     default: 0
 },

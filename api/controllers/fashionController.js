@@ -46,9 +46,9 @@ exports.getAll = function(req, res) {
 };
 
 exports.getTopAll = function(req, res) {
-  topModel.find({}, function(err, items) {
+  topModel.find({}, function(err, docs) {
     if (err) res.send(err);
-    res.json(items);
+    res.json(docs)
   });
 };
 
