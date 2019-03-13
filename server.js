@@ -23,22 +23,6 @@ var mongoose = require('mongoose')
 var bodyParser = require('body-parser'); // Parse incoming request bodies in a 
 // middleware before your handlers, available under the req.body property.
 
-// LOAD the created model - task 
-// This is necessary or else the Schema won't be registered
-var fashionModel = require("./api/models/fashionModel");
-
-var topModel = require("./api/models/TopModel");
-var bottomModel = require("./api/models/BottomModel");
-var dressModel = require("./api/models/DressModel");
-var fashionAccessModel = require("./api/models/FashionAccessModel");
-var shoeModel = require("./api/models/ShoeModel");
-
-var top = require("./api/stores/topSP.js"); // import walmart module
-var bottom = require("./api/stores/bottomSP.js"); // import walmart module
-var dress = require("./api/stores/dressSP.js"); // import walmart module
-var fashion = require("./api/stores/fashionSP.js"); // import walmart module
-var shoes = require("./api/stores/shoeSP.js"); // import walmart module
-
 // mongoose instance connectino url connection
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/thrifterLocalDB', { useNewUrlParser: true });
