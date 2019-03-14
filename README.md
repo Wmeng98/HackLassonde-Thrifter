@@ -12,3 +12,8 @@
   4. npm start
   5. "run" mongod# HackLassonde-Thrifter
   6. Use your GCP Console API key to authenticate to the Vision API
+
+# Front End
+
+- You can find the front end files here: https://github.com/jamiedishy/Thrifter
+
