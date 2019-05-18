@@ -1,6 +1,7 @@
 var express = require('express'); // import express module
 
 var app = express(); // create express app
+var path = require('path');
 
 // KNN library
 knn = require('alike');
@@ -48,9 +49,9 @@ var corsOptions = {
   //   next();
   // });
 
-    var cors = require('cors');
-    app.use(cors());
-    app.options('*', cors());
+    // var cors = require('cors');
+    // app.use(cors());
+    // app.options('*', cors());
   //   // CORS Options
   //   var corsOptions = {
   //     origin: 'http://localhost:3000',
@@ -76,9 +77,16 @@ app.use(bodyParser.urlencoded({
 var thrifterAPI = require('./api/controllers/thrifterController');
 thrifterAPI(app); // register the controller
 
+app.get('/src/thrifter/landing', function(req, res) {
+    res.sendFile(path.join(__dirname + '/src/start.html'));
+});
+app.get('/src/thrifter/home', function(req, res) {
+  res.sendFile(path.join(__dirname + '/src/index.html'));
+});
+
 
 app.listen(process.env.PORT || port, function() {
-  console.log("CORS-enabled server listening on port %d in %s mode", this.address().port, app.settings.env);
+  console.log("Server listening on port %d in %s mode", this.address().port, app.settings.env);
 });
 
 console.log("thrifter restful api started on port: " + port);

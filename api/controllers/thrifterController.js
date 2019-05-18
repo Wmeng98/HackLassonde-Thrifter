@@ -57,6 +57,7 @@ module.exports = function(app) {
   var upload2 = multer({ storage: storage2 });
 
   const vision = require('@google-cloud/vision');
+
   // Creates a client
   const client = new vision.ImageAnnotatorClient();
   
@@ -148,13 +149,17 @@ module.exports = function(app) {
       .labelDetection('./searchImg/' + req.file.filename)
       .then(results => {
         const labels = results[0].labelAnnotations;
-  
+
+        // delete search image from the server
+        const searchImgPath = './searchImg/' + req.file.filename;
+        
         console.log('Labels:');
   
         // Store state of descriptions in a dictionary
         // Used when filling in the model to update a specific collection
         
-        // Assumption: imgs are saved on the backend as png
+        // Assumption: imgs are saved on the backend as png before processing by GCP API
+        // Then deleted once processed
   
         var dict = {};
         console.log("*******");
@@ -527,9 +532,19 @@ module.exports = function(app) {
             // console.log(objArr); 
           }); 
         } else {
-          // 
+          res.send({});
         }
-        
+
+        // Remove search image from the server
+        fs.unlink(searchImgPath, (err) => {
+          if (err) {
+            console.error(err)
+            return
+          }
+          console.log('Search image succesfully deleted...');
+          //file removed
+        })
+
       })
       .catch(err => {
         console.error('ERROR:', err);
