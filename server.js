@@ -77,6 +77,9 @@ app.use(bodyParser.urlencoded({
 var thrifterAPI = require('./api/controllers/thrifterController');
 thrifterAPI(app); // register the controller
 
+app.get('/', function(req, res) {
+  res.sendFile(path.join(__dirname + '/src/start.html'));
+});
 app.get('/src/thrifter/landing', function(req, res) {
     res.sendFile(path.join(__dirname + '/src/start.html'));
 });
