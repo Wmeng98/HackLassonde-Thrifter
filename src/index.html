@@ -306,7 +306,8 @@
               });
         
               // Set up our request
-              XHR.open("POST", "http://localhost:3000/api/thrifter/searchImg");
+              // XHR.open("POST", "http://localhost:3000/api/thrifter/searchImg");
+              XHR.open("POST", "https://thrifter-api.herokuapp.com/api/thrifter/searchImg");
         
               // The data sent is what the user provided in the form
               XHR.send(FD);
