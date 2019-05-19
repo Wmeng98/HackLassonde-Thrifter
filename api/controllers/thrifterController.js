@@ -19,10 +19,13 @@ module.exports = function(app) {
 
   app.get('/src/testGet', function(req, res) {
     topModel.find({}, function(err, items) {
-      if (err) console.log(err);
+      if (err) {
+        console.log(err);
+        res.send("error with mongo");
+      }
       // console.log(items);
       objArr = JSON.parse(JSON.stringify(items));
-      res.send(objArr);
+      res.send("No mongo error");
     });
   });
 
