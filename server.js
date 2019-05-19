@@ -88,6 +88,10 @@ app.get('/src/thrifter/home', function(req, res) {
   res.sendFile(path.join(__dirname + '/src/index.html'));
 });
 
+app.get('/src/testGet', function(req, res) {
+  res.send("test get request");
+});
+
 
 app.listen(process.env.PORT || port, function() {
   console.log("Server listening on port %d in %s mode", this.address().port, app.settings.env);
