@@ -36,13 +36,13 @@ mongoose.connection.on("open", function(){
   //mongoose.connection.db.collectionNames(function)
 });
 
-var cors = require('cors');
+// var cors = require('cors');
 
-// CORS Options
-var corsOptions = {
-  origin: 'http://localhost:3000',
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-}
+// // CORS Options
+// var corsOptions = {
+//   origin: 'http://localhost:3000',
+//   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+// }
 
 
   // app.all('/*', function(req, res, next) {
