@@ -26,7 +26,14 @@ var bodyParser = require('body-parser'); // Parse incoming request bodies in a
 
 // mongoose instance connectino url connection
 mongoose.Promise = global.Promise;
-mongoose.connect(`mongodb://${process.env.MLAB_USER}:${process.env.MLAB_PWD}@ds119755.mlab.com:19755/mongosandbox`, { useNewUrlParser: true });
+
+console.log("process env for mongod");
+console.log(process.env.MLAB_USER);
+console.log(process.env.MLAB_PWD);
+
+mongoose.connect(`mongodb://${process.env.MLAB_USER}:${process.env.MLAB_PWD}@ds119755.mlab.com:19755/mongosandbox`, { useNewUrlParser: true }).catch(function (reason) {
+  console.log('Unable to connect to the mongodb instance. Error: ', reason);
+});
 // mongoose.connect('mongodb://localhost/thrifterLocalDB', { useNewUrlParser: true });
 
 mongoose.connection.on("open", function(){
@@ -44,21 +51,20 @@ mongoose.connection.on("open", function(){
 // }
 
 
-  // app.all('/*', function(req, res, next) {
-  //   res.header("Access-Control-Allow-Origin", "*");
-  //   res.header("Access-Control-Allow-Headers", "X-Requested-With");
-  //   next();
-  // });
+//   app.all('/*', function(req, res, next) {
+//     res.header("Access-Control-Allow-Origin", "*");
+//     res.header("Access-Control-Allow-Headers", "X-Requested-With");
+//     next();
+//   });
 
     // var cors = require('cors');
     // app.use(cors());
     // app.options('*', cors());
-  //   // CORS Options
-  //   var corsOptions = {
-  //     origin: 'http://localhost:3000',
-  //     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-  // }
-
+    // // CORS Options
+    // var corsOptions = {
+    //   origin: 'https://thrifter-api.herokuapp.com',
+    //   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+    // }
 
 
 // app.use(express.urlencoded());

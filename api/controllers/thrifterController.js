@@ -17,7 +17,13 @@ module.exports = function(app) {
   var fashion = require("../stores/fashionSP.js"); // import walmart module
   var shoes = require("../stores/shoeSP.js"); // import walmart module
 
-  app.get('/src/testGet', function(req, res) {
+  const cors = require('cors')
+
+  const corsOptions = {
+    origin: 'https://thrifter-api.herokuapp.com'
+  }
+
+  app.get('/src/testGet', cors(corsOptions) ,function(req, res) {
     topModel.find({}, function(err, items) {
       if (err) {
         console.log(err);
@@ -73,7 +79,7 @@ module.exports = function(app) {
   // Creates a client
   const client = new vision.ImageAnnotatorClient();
   
-  app.post('/api/thrifter/uploadImg', upload.single('files'), function (req, res, next) {
+  app.post('/api/thrifter/uploadImg',cors(corsOptions), upload.single('files'), function (req, res, next) {
     console.log("Saved file");
     console.log(req.file);
     // store req.body.filename filename in mongoDBks
@@ -147,7 +153,7 @@ module.exports = function(app) {
   });
 
 
-  app.post('/api/thrifter/searchImg', upload2.single('files'), function (req, res, next) {
+  app.post('/api/thrifter/searchImg',cors(corsOptions), upload2.single('files'), function (req, res, next) {
     console.log("Saved file");
     console.log(req.file);
     console.log(req);
