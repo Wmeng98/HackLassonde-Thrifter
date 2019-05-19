@@ -20,7 +20,7 @@ module.exports = function(app) {
   const cors = require('cors')
 
   const corsOptions = {
-    origin: '*'
+    origin: 'https://thrifter-api.herokuapp.com'
   }
 
   app.get('/src/testGet', cors(corsOptions) ,function(req, res) {
