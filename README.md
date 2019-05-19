@@ -1,19 +1,16 @@
 # HackLassonde-Thrifter
-
+- Heroku deployment: https://thrifter-api.herokuapp.com/src/thrifter/landing
 # THRIFTER Web API
 
 - The REST API for Thrifter, Hack Lassonde Application
 - Utilized Google Cloud Vision API to classify images
 
-# Steps to run
+# Steps to run locally
   1. Install node.js, mongodb
-  2. clone the repository
-  3. npm install
-  4. npm start
-  5. "run" mongod# HackLassonde-Thrifter
-  6. Use your GCP Console API key to authenticate to the Vision API
+  2. Setup your GCP Vision API service account key
+  3. clone the repository
+  4. npm install
+  5. npm start
+  6. "run" mongo daemon (mongod)
 
-# Front End
-
-- You can find the front end files here: https://github.com/jamiedishy/Thrifter
 
