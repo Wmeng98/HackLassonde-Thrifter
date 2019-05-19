@@ -202,6 +202,8 @@
           function parseTable(obj) {
 
             newObj = JSON.parse(obj);
+
+            console.log(newObj);
             
             let dataContent1 = '';
             let dataContent2 = '';
@@ -258,28 +260,10 @@
                   "margin-bottom": "25px;"
               });
 
-            } // else if (newObj.length > 0) { // technically will never have 0 or 1 matches, algorithm will always return 2 CLOSEST matches
-          //     // data1
-          //     // $("#data1").replaceWith('');
-
-          //     console.log(newObj[0].Description);
-          //     console.log(newObj[0].base64);
-              
-          //     dataContent1 += "<h3>Description: </h3>";
-          //     dataContent1 +=  "<div>" + newObj[0].Description + "</div>";
-          //     dataContent1 += "<h3>Store: </h3>";
-          //     dataContent1 +=  "<div>" + newObj[0].Store + "</div>";
-          //     dataContent1 += "<img src='data:image/png;base64," + newObj[0].base64 + "'" + " style= 'max-width:200px; max-height: 200px;'/>";
-          //     dataContent1 += "<br>";
-
-          //     $("#data1").html(dataContent1);
-          //     $("#data2").html('');
-          //   } else { 
-          //     $("#data1").html('');
-          //     $("#data2").html('');
-          //     $("#notFound").html("<div>No Matches Found!</div>");
-          //   }
-          // }
+            } else {
+              alert("No matches found");
+            }
+            
           }
 
           window.addEventListener("load", function () {
@@ -306,8 +290,8 @@
               });
         
               // Set up our request
-              // XHR.open("POST", "http://localhost:3000/api/thrifter/searchImg");
-              XHR.open("POST", "https://thrifter-api.herokuapp.com/api/thrifter/searchImg");
+              XHR.open("POST", "http://localhost:3000/api/thrifter/searchImg");
+              // XHR.open("POST", "https://thrifter-api.herokuapp.com/api/thrifter/searchImg");
         
               // The data sent is what the user provided in the form
               XHR.send(FD);
