@@ -26,7 +26,9 @@ var bodyParser = require('body-parser'); // Parse incoming request bodies in a
 
 // mongoose instance connectino url connection
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/thrifterLocalDB', { useNewUrlParser: true });
+
+mongoose.connect(`mongodb://${process.env.MLAB_USER}:${process.env.MLAB_PWD}@ds119755.mlab.com:19755/mongosandbox`, { useNewUrlParser: true });
+// mongoose.connect('mongodb://localhost/thrifterLocalDB', { useNewUrlParser: true });
 
 mongoose.connection.on("open", function(){
   console.log("mongodb is connected!!");
