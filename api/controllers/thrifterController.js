@@ -29,6 +29,7 @@ module.exports = function(app) {
         console.log(err);
         res.send("error with mongo");
       }
+      console.log("reached api endpoint here...");
       console.log(items);
       res.send(items);
     });
