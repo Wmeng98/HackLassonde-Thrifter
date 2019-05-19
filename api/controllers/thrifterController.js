@@ -20,7 +20,7 @@ module.exports = function(app) {
   const cors = require('cors')
 
   const corsOptions = {
-    origin: 'https://thrifter-api.herokuapp.com'
+    origin: '*'
   }
 
   app.get('/src/testGet', cors(corsOptions) ,function(req, res) {
@@ -29,9 +29,8 @@ module.exports = function(app) {
         console.log(err);
         res.send("error with mongo");
       }
-      // console.log(items);
-      objArr = JSON.parse(JSON.stringify(items));
-      res.send("No mongo error");
+      console.log(items);
+      res.send(items);
     });
   });
 
