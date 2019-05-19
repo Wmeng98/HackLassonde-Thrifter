@@ -4,7 +4,8 @@
   "description": "\"restful api web server for the thrifter web app\"",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "preinstall": "node preinstall.js"
   },
   "keywords": [
     "RESTful",
