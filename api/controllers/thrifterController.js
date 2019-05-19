@@ -17,6 +17,15 @@ module.exports = function(app) {
   var fashion = require("../stores/fashionSP.js"); // import walmart module
   var shoes = require("../stores/shoeSP.js"); // import walmart module
 
+  app.get('/src/testGet', function(req, res) {
+    topModel.find({}, function(err, items) {
+      if (err) console.log(err);
+      // console.log(items);
+      objArr = JSON.parse(JSON.stringify(items));
+      res.send(objArr);
+    });
+  });
+
   // KNN library
   knn = require('alike');
   options = {
